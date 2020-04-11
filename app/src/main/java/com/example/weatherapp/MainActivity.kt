@@ -18,6 +18,7 @@ import java.time.format.DateTimeFormatter
 class MainActivity : AppCompatActivity() {
     var dataList = ArrayList<HashMap<String, String>>()
     lateinit var address:EditText
+    lateinit var date_search: Date
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,10 +31,12 @@ class MainActivity : AppCompatActivity() {
 
             weatherTask().execute(cityname)
         }
-       val lsView=findViewById<ListView>(R.id.listView)
-       val context= lsView.setOnItemClickListener {parent, view, position, id ->
-            val selectedItem = parent.getItemAtPosition(position) as String
-            val detailintent = Intent(this, DetailActivity::class.java)
+
+        val lsView=findViewById<ListView>(R.id.listView)
+
+        val context= lsView.setOnItemClickListener {parent, view, position, id ->
+           val selectedItem = parent.getItemAtPosition(position) as String
+          //  val detailintent = Intent(this, DetailActivity::class.java)
             val updateDate=findViewById<TextView>(R.id.updated_at)
             intent.putExtra("updatedate", updateDate.text.toString())
             startActivity(detailintent)
@@ -81,15 +84,13 @@ class MainActivity : AppCompatActivity() {
                 val weather = singleCity.getJSONArray("weather")
                 val weatherMain = weather.getJSONObject(0).getString("main")
                 val updated = singleCity.getString("dt_txt")
+
+                /* Mapping values */
                 val map = HashMap<String, String>()
-               /* map["updatedAt"] = singleCity.getString("dt_txt")
-                map["desc"]=weather.getJSONObject(0).getString("main")
-               // map["desc"] = weather.getString("main") */
-               map["updatedAt"]=updated
-               map["desc"] = weatherMain
+                map["updatedAt"]=updated
+                map["desc"] = weatherMain
                 map["temp"] = temp
 
-                //map["image"] = singleCity.getString("image")
                 dataList.add(map)
             }
 
