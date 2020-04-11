@@ -36,7 +36,7 @@ class MainActivity : AppCompatActivity() {
           //  val detailintent = Intent(this, DetailActivity::class.java)
             val updateDate=findViewById<TextView>(R.id.updated_at)
             intent.putExtra("updatedate", updateDate.text.toString())
-            startActivity(detailintent)
+            //startActivity(detailintent)
         }
     }
     inner class weatherTask() : AsyncTask<String, Void, String>() {
