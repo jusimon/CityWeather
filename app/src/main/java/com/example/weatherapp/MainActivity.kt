@@ -5,14 +5,11 @@ import android.os.Bundle
 import android.view.View
 import org.json.JSONObject
 import java.net.URL
-import java.nio.charset.Charset
-import java.text.SimpleDateFormat
 import java.util.*
-import javax.xml.transform.Result
 import android.os.AsyncTask
-import android.util.Log
 import android.widget.*
-import kotlinx.android.synthetic.main.activity_main.*
+import java.time.LocalDate
+import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 
 class MainActivity : AppCompatActivity() {
@@ -81,11 +78,16 @@ class MainActivity : AppCompatActivity() {
                 val weather = singleCity.getJSONArray("weather")
                 val weatherMain = weather.getJSONObject(0).getString("main")
                 val updated = singleCity.getString("dt_txt")
+                val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss", Locale.US)
+                val date = LocalDate.parse(updated, formatter)
+                val mformatter = DateTimeFormatter.ofPattern("MMM dd")
+                val formatted = date.format(mformatter)
+
                 val map = HashMap<String, String>()
                /* map["updatedAt"] = singleCity.getString("dt_txt")
                 map["desc"]=weather.getJSONObject(0).getString("main")
                // map["desc"] = weather.getString("main") */
-               map["updatedAt"]=updated
+               map["updatedAt"]=formatted
                map["desc"] = weatherMain
                 map["temp"] = temp
 
