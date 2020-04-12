@@ -8,6 +8,7 @@ import java.net.URL
 import java.util.*
 import android.os.AsyncTask
 import android.widget.*
+import kotlinx.android.synthetic.main.activity_main.*
 import java.time.LocalDate
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
@@ -20,11 +21,11 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        //val edText=findViewById<EditText>(R.id.address)
+
         val showButton=findViewById<Button>(R.id.button_show)
         showButton.setOnClickListener() {
             val edText=findViewById<EditText>(R.id.address)
-            var cityname=edText.text.toString()
+            val cityname=edText.text.toString()
 
             weatherTask().execute(cityname)
         }
@@ -32,15 +33,16 @@ class MainActivity : AppCompatActivity() {
         val lsView=findViewById<ListView>(R.id.listView)
 
         val context= lsView.setOnItemClickListener {parent, view, position, id ->
-           val selectedItem = parent.getItemAtPosition(position) as String
-          //  val detailintent = Intent(this, DetailActivity::class.java)
-            val updateDate=findViewById<TextView>(R.id.updated_at)
-            intent.putExtra("updatedate", updateDate.text.toString())
-            //startActivity(detailintent)
+         //  val selectedItem = parent.getItemAtPosition(position) as String
+            val detailintent = Intent(this, DetailActivity::class.java)
+          val updateDate=findViewById<TextView>(R.id.updated_at)
+           detailintent.putExtra("updatedate", updateDate.text.toString())
+         detailintent.putExtra("cityname", findViewById<EditText>(R.id.address).text)
+            startActivity(detailintent)
         }
     }
-    inner class weatherTask() : AsyncTask<String, Void, String>() {
-
+    //inner class weatherTask() : MyAsyncTask<String, Void, String>() {
+    inner class weatherTask() : MyAsyncTask() {
         override fun onPreExecute() {
             super.onPreExecute()
             /* Showing the ProgressBar, Making the main design GONE */
@@ -48,7 +50,7 @@ class MainActivity : AppCompatActivity() {
             // findViewById<TextView>(R.id.errorText)?.visibility = View.GONE
         }
 
-        override fun doInBackground(vararg params: String?): String? {
+        /*override fun doInBackground(vararg params: String?): String? {
             var response: String?
             val API: String = "a1e255769aa8bcdc3e77af00352330c9"
             val city:String? = params[0]
@@ -63,7 +65,7 @@ class MainActivity : AppCompatActivity() {
                 response = null
             }
             return response
-        }
+        } */
 
         override fun onPostExecute(result: String) {
             super.onPostExecute(result)
@@ -74,6 +76,7 @@ class MainActivity : AppCompatActivity() {
 
             //val weatherArr = jsonObj.getJSONArray("city")
             val weatherArr=jsonObj.getJSONArray("list")
+            dataList.clear()
             for (i in 0 until 40 step 8) {
                 val singleCity = weatherArr.getJSONObject(i)
                 val main=singleCity.getJSONObject("main")
@@ -93,60 +96,12 @@ class MainActivity : AppCompatActivity() {
                 map["updatedAt"]=formatted
                 map["desc"] = weatherMain
                 map["temp"] = temp
-
                 dataList.add(map)
+
             }
 
-          /*  try {
-                /* Extracting JSON returns from the API */
-
-                val jsonObj = JSONObject(result)
-                val main = jsonObj.getJSONObject("main")
-                val sys = jsonObj.getJSONObject("sys")
-                val wind = jsonObj.getJSONObject("wind")
-                val weather = jsonObj.getJSONArray("weather").getJSONObject(0)
-
-                val updatedAt: Long = jsonObj.getLong("dt")
-                val updatedAtText =
-                    "Updated at: " + SimpleDateFormat("dd/MM/yyyy hh:mm a", Locale.ENGLISH).format(
-                        Date(updatedAt * 1000)
-                    )
-                val temp = main.getString("temp") + "°C"
-                val tempMin = "Min Temp: " + main.getString("temp_min") + "°C"
-                val tempMax = "Max Temp: " + main.getString("temp_max") + "°C"
-                val pressure = main.getString("pressure")
-                val humidity = main.getString("humidity")
-
-                val sunrise: Long = sys.getLong("sunrise")
-                val sunset: Long = sys.getLong("sunset")
-                val windSpeed = wind.getString("speed")
-                val weatherDescription = weather.getString("description")
-
-                val address = jsonObj.getString("name") + ", " + sys.getString("country")
-
-                /* Populating extracted data into our views */
-                findViewById<TextView>(R.id.address).text = address
-                findViewById<TextView>(R.id.updated_at).text = updatedAtText
-                findViewById<TextView>(R.id.status).text = weatherDescription
-                findViewById<TextView>(R.id.temp).text = temp
-                findViewById<TextView>(R.id.temp_min).text = tempMin
-                findViewById<TextView>(R.id.temp_max).text = tempMax
-                /* findViewById<TextView>(R.id.sunrise).text =
-                        SimpleDateFormat("hh:mm a", Locale.ENGLISH).format(Date(sunrise * 1000))
-                findViewById<TextView>(R.id.sunset).text =
-                        SimpleDateFormat("hh:mm a", Locale.ENGLISH).format(Date(sunset * 1000))
-                findViewById<TextView>(R.id.wind).text = windSpeed
-                findViewById<TextView>(R.id.pressure).text = pressure
-                findViewById<TextView>(R.id.humidity).text = humidity */
-
-                /* Views populated, Hiding the loader, Showing the main design */
-                // findViewById<ProgressBar>(R.id.loader).visibility = View.GONE
-
-            } catch (e: Exception) {
-                // findViewById<ProgressBar>(R.id.loader).visibility = View.GONE
-                // findViewById<TextView>(R.id.errorText).visibility = View.VISIBLE
-            } */
             findViewById<ListView>(R.id.listView).adapter = CustomAdapter(this@MainActivity, dataList)
+
         }
     }
 }

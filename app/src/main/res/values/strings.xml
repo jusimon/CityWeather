@@ -15,4 +15,6 @@
     <string name="errorText">Error</string>
     <string name="sunrise">Sunrise</string>
     <string name="sunset">Sunset</string>
+    <string name="status">Status</string>
+
 </resources>

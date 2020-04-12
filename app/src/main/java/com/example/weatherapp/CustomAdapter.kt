@@ -31,4 +31,5 @@ class CustomAdapter(private val context: Context,
         rowView.tag = position
         return rowView
     }
+
 }
