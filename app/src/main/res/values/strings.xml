@@ -6,7 +6,7 @@
     <string name="temp">Temp</string>
     <string name="temp_min">Minimum Temp</string>
     <string name="temp_max">Maximum Temp</string>
-    <string name="pressure">Wind</string>
+    <string name="pressure">Pressure</string>
     <string name="button_show">Show</string>
     <string name="wind">Wind</string>
     <string name="humidity">Humidity</string>
@@ -16,5 +16,8 @@
     <string name="sunrise">Sunrise</string>
     <string name="sunset">Sunset</string>
     <string name="status">Status</string>
-    <string name ="locIcon">Location_marker</string>
+    <string name="locIcon">Location_marker</string>
+    <string name="novalue"></string>
+    <string name="ls_time">Time</string>
+
 </resources>

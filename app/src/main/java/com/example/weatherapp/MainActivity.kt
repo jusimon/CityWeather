@@ -4,13 +4,9 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import org.json.JSONObject
-import java.net.URL
 import java.util.*
-import android.os.AsyncTask
 import android.widget.*
-import kotlinx.android.synthetic.main.activity_main.*
 import java.time.LocalDate
-import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 import kotlin.collections.HashMap
 
@@ -30,11 +26,12 @@ class MainActivity : AppCompatActivity() {
             weatherTask().execute(cityname)
         }
 
-        val lsView=findViewById<ListView>(R.id.listView)
+        val lsView=findViewById<ListView>(R.id.listViewDetail)
 
             val context= lsView.setOnItemClickListener {parent, view, position, id ->
             val selectedItem = parent.getItemAtPosition(position) as HashMap<String, String>
-            val detailintent = Intent(this, DetailActivity::class.java)
+            //val detailintent = Intent(this, DetailActivity::class.java)
+                val detailintent = Intent(this,ListActivity::class.java)
                 val updateDate=selectedItem.get("updatedAt")
                     //findViewById<TextView>(R.id.updated_at).text.toString()
                 detailintent.putExtra("updatedate", updateDate.toString())
@@ -103,7 +100,7 @@ class MainActivity : AppCompatActivity() {
 
             }
 
-            findViewById<ListView>(R.id.listView).adapter = CustomAdapter(this@MainActivity, dataList)
+            findViewById<ListView>(R.id.listViewDetail).adapter = CustomAdapter(this@MainActivity, dataList)
 
         }
     }
