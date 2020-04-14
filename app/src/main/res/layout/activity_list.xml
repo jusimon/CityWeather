@@ -29,15 +29,19 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:gravity="center"
             android:hint="@string/address"
-            android:text="@string/address" />
+            android:text="@string/address"
+            android:textSize="18sp" />
 
         <TextView
             android:id="@+id/ls_date"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="@string/novalue" />
+            android:gravity="center"
+            android:text="@string/novalue"
+            android:textSize="18sp" />
     </LinearLayout>
 
 

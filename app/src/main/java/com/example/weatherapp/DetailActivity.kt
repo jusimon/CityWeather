@@ -58,14 +58,14 @@ class DetailActivity : AppCompatActivity() {
                 if ((formatted  == searchDate) && (searchTime == updateTime[1])) {
 
                     val main = singleCity.getJSONObject("main")
-                    val temp = "Temp: " + main.getString("temp") + "°C"
+                    val temp =  main.getString("temp") + "°c"
                     val weather = singleCity.getJSONArray("weather")
                    // val weatherDescription = weather.getString(0)
                     val weatherdesc = weather.getJSONObject(0).getString("description")
                     val tempMin = "Min Temp: " + main.getString("temp_min") + "°C"
                     val tempMax = "Max Temp: " + main.getString("temp_max") + "°C"
-                    val pressure = "Pressure: " + main.getString("pressure")
-                    val humidity = "Humidity: "+ main.getString("humidity")
+                    val pressure =  main.getString("pressure")
+                    val humidity = main.getString("humidity") +" %"
 
                     val winddetails = singleCity.getJSONObject("wind")
                     val windSpeed = winddetails.getString("speed")
@@ -79,7 +79,7 @@ class DetailActivity : AppCompatActivity() {
                    tv_place = findViewById<TextView>(R.id.dt_place)
                        tv_place .text = placename
                     tv_time = findViewById<TextView>(R.id.dt_date)
-                        tv_time.text = formatted.toString()
+                        tv_time.text = updated.toString()
                     findViewById<TextView>(R.id.dt_status).text = weatherdesc
                     findViewById<TextView>(R.id.dt_temp).text = temp
                     findViewById<TextView>(R.id.dt_temp_min).text = tempMin
