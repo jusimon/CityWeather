@@ -19,7 +19,7 @@ abstract class MyAsyncTask(): AsyncTask<String, Void, String>() {
                 )
 
         } catch (e: Exception) {
-            response = null
+            response = "Invaid City or Place name"
         }
         return response
     }

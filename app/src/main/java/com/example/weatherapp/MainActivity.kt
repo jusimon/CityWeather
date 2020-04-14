@@ -12,16 +12,16 @@ import kotlinx.android.synthetic.main.activity_main.*
 import java.time.LocalDate
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
+import kotlin.collections.HashMap
 
 class MainActivity : AppCompatActivity() {
     var dataList = ArrayList<HashMap<String, String>>()
     lateinit var address:EditText
-    lateinit var date_search: Date
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
+        //weatherTask().execute("San Jose")
         val showButton=findViewById<Button>(R.id.button_show)
         showButton.setOnClickListener() {
             val edText=findViewById<EditText>(R.id.address)
@@ -32,12 +32,15 @@ class MainActivity : AppCompatActivity() {
 
         val lsView=findViewById<ListView>(R.id.listView)
 
-        val context= lsView.setOnItemClickListener {parent, view, position, id ->
-         //  val selectedItem = parent.getItemAtPosition(position) as String
+            val context= lsView.setOnItemClickListener {parent, view, position, id ->
+            val selectedItem = parent.getItemAtPosition(position) as HashMap<String, String>
             val detailintent = Intent(this, DetailActivity::class.java)
-          val updateDate=findViewById<TextView>(R.id.updated_at)
-           detailintent.putExtra("updatedate", updateDate.text.toString())
-         detailintent.putExtra("cityname", findViewById<EditText>(R.id.address).text)
+                val updateDate=selectedItem.get("updatedAt")
+                    //findViewById<TextView>(R.id.updated_at).text.toString()
+                detailintent.putExtra("updatedate", updateDate.toString())
+               // detailintent.putExtra("updatedate", updateDate)
+              detailintent.putExtra("cityname", findViewById<EditText>(R.id.address).text.toString())
+
             startActivity(detailintent)
         }
     }

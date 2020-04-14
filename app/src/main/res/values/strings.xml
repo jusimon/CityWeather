@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">WeatherApp</string>
     <string name="updated_at">Time</string>
-    <string name="address"></string>
+    <string name="address">San Jose</string>
     <string name="desc">Weather</string>
     <string name="temp">Temp</string>
     <string name="temp_min">Minimum Temp</string>
@@ -16,5 +16,5 @@
     <string name="sunrise">Sunrise</string>
     <string name="sunset">Sunset</string>
     <string name="status">Status</string>
-
+    <string name ="locIcon">Location_marker</string>
 </resources>

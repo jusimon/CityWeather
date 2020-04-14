@@ -6,84 +6,83 @@
     android:layout_height="match_parent"
     tools:context=".DetailActivity">
 
-    <TextView
-        android:id="@+id/textView_date"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="47dp"
-        android:layout_marginTop="36dp"
-        android:layout_marginEnd="115dp"
-        android:text="@string/updated_at"
-        app:layout_constraintEnd_toStartOf="@+id/TextView_place"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/TextView_place"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="115dp"
-        android:layout_marginTop="40dp"
-        android:layout_marginEnd="131dp"
-        android:text="@string/address"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/textView_date"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <LinearLayout
-        android:id="@+id/linearLayout2"
-        android:layout_width="401dp"
-        android:layout_height="88dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="28dp"
-        android:gravity="center"
-        android:visibility="visible"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView_date">
-
-        <TextView
-            android:id="@+id/status"
-            android:layout_width="144dp"
-            android:layout_height="38dp"
-            android:layout_gravity="center"
-            android:text="@string/status"
-            android:textSize="18sp"
-            android:visibility="visible" />
-
-        <Space
-            android:layout_width="50dp"
-            android:layout_height="wrap_content" />
-
-        <TextView
-            android:id="@+id/temp"
-            android:layout_width="144dp"
-            android:layout_height="38dp"
-            android:layout_gravity="center"
-            android:fontFamily="sans-serif-thin"
-            android:text="@string/temp"
-            android:textSize="18sp"
-            android:visibility="visible" />
-    </LinearLayout>
 
     <LinearLayout
         android:id="@+id/linearLayout"
-        android:layout_width="403dp"
-        android:layout_height="124dp"
-        android:layout_marginTop="24dp"
+        android:layout_width="397dp"
+        android:layout_height="181dp"
         android:gravity="center"
+        android:orientation="vertical"
         android:visibility="visible"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:id="@+id/linearLayout1"
+            android:layout_width="401dp"
+            android:layout_height="77dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+
+            <ImageView
+                android:id="@+id/locIcon"
+                android:layout_width="71dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="end"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="24dp"
+                android:contentDescription="@string/locIcon"
+                app:srcCompat="@drawable/place_marker" />
+
+            <TextView
+                android:id="@+id/dt_place"
+                android:layout_width="wrap_content"
+                android:layout_height="51dp"
+                android:layout_marginTop="23dp"
+                android:layout_marginBottom="29dp"
+                android:gravity="center"
+                android:text="@string/address"
+                android:textSize="25sp" />
+
+
+        </LinearLayout>
 
         <TextView
-            android:id="@+id/temp_min"
-            android:layout_width="wrap_content"
-            android:layout_height="65dp"
+            android:id="@+id/dt_date"
+            android:layout_width="168dp"
+            android:layout_height="56dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="80dp"
+            android:layout_marginBottom="28dp"
+            android:fontFamily="sans-serif-black"
+            android:gravity="end"
+            android:text="@string/updated_at"
+            android:textSize="25sp" />
+    </LinearLayout>
 
-            android:text="@string/temp_min"
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="400dp"
+        android:layout_height="78dp"
+        android:layout_marginStart="8dp"
+        android:gravity="center"
+        android:textSize="24sp"
+        android:visibility="visible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.833"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+
+        <TextView
+            android:id="@+id/dt_status"
+            android:layout_width="154dp"
+            android:layout_height="48dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="@string/status"
+            android:textSize="21sp"
             android:visibility="visible" />
 
         <Space
@@ -91,47 +90,81 @@
             android:layout_height="wrap_content" />
 
         <TextView
-            android:id="@+id/temp_max"
-            android:layout_width="wrap_content"
-            android:layout_height="65dp"
-            android:text="@string/temp_max"
+            android:id="@+id/dt_temp"
+            android:layout_width="151dp"
+            android:layout_height="48dp"
+            android:layout_gravity="center"
+            android:fontFamily="@font/autour_one"
+            android:text="@string/temp"
+            android:textSize="21sp"
             android:visibility="visible" />
-
-        <TextView
-            android:id="@+id/pressure"
-            android:layout_width="wrap_content"
-            android:layout_height="65dp"
-            android:layout_weight="1"
-            android:text="TextView" />
-
-        <TextView
-            android:id="@+id/humidity"
-            android:layout_width="wrap_content"
-            android:layout_height="65dp"
-            android:layout_weight="1"
-            android:text="TextView"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
     </LinearLayout>
 
+
     <LinearLayout
-        android:id="@+id/linearLayout3"
-        android:layout_width="402dp"
-        android:layout_height="157dp"
-        android:layout_marginBottom="224dp"
+            android:id="@+id/linearLayout3"
+            android:layout_width="405dp"
+            android:layout_height="77dp"
+            android:layout_marginStart="14dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="2dp"
+            android:gravity="center"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
+
+            <TextView
+                android:id="@+id/dt_temp_min"
+                android:layout_width="157dp"
+                android:layout_height="65dp"
+                android:textSize="18sp"
+                android:gravity="center"
+                android:text="@string/temp_min"
+                android:visibility="visible" />
+
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="32dp"
+            android:layout_weight="1" />
+
+            <TextView
+                android:id="@+id/dt_temp_max"
+                android:layout_width="156dp"
+                android:layout_height="65dp"
+                android:gravity="center"
+                android:textSize="18sp"
+                android:text="@string/temp_max"
+                android:visibility="visible" />
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+        </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/linearLayout4"
+        android:layout_width="390dp"
+        android:layout_height="173dp"
+        android:layout_marginStart="7dp"
         android:gravity="center"
         android:orientation="horizontal"
         android:visibility="visible"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout3">
 
         <LinearLayout
-            android:layout_width="129dp"
-            android:layout_height="100dp"
+            android:layout_width="126dp"
+            android:layout_height="114dp"
             android:gravity="center"
             android:orientation="vertical">
 
-            <!--android:tint="#FFFFFF" -->
+
             <Space
                 android:layout_width="wrap_content"
                 android:layout_height="5dp" />
@@ -146,15 +179,15 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/sunrise"
-                android:textSize="14sp"
+                android:textSize="18sp"
                 android:visibility="visible" />
 
             <TextView
-                android:id="@+id/sunrise"
+                android:id="@+id/dt_sunrise"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/sunrise"
-                android:textSize="14sp"
+                android:textSize="18sp"
                 android:visibility="visible" />
         </LinearLayout>
 
@@ -163,8 +196,8 @@
             android:layout_height="wrap_content" />
 
         <LinearLayout
-            android:layout_width="123dp"
-            android:layout_height="103dp"
+            android:layout_width="124dp"
+            android:layout_height="113dp"
             android:gravity="center"
             android:orientation="vertical"
             android:visibility="visible">
@@ -174,7 +207,6 @@
                 android:layout_height="25dp"
                 android:contentDescription="@string/sunset"
                 android:src="@drawable/sunset" />
-            <!--android:tint="#FFFFFF" -->
 
 
             <Space
@@ -185,15 +217,15 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/sunset"
-                android:textSize="14sp"
+                android:textSize="18sp"
                 android:visibility="visible" />
 
             <TextView
-                android:id="@+id/sunset"
+                android:id="@+id/dt_sunset"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/sunset"
-                android:textSize="14sp"
+                android:textSize="18sp"
                 android:visibility="visible" />
         </LinearLayout>
 
@@ -213,7 +245,7 @@
                 android:layout_height="25dp"
                 android:contentDescription="@string/wind"
                 android:src="@drawable/wind" />
-            <!-- android:tint="#FFFFFF" -->
+
 
             <Space
                 android:layout_width="wrap_content"
@@ -223,15 +255,15 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/wind"
-                android:textSize="14sp"
+                android:textSize="18sp"
                 android:visibility="visible" />
 
             <TextView
-                android:id="@+id/wind"
+                android:id="@+id/dt_wind"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/wind"
-                android:textSize="14sp"
+                android:textSize="18sp"
                 android:visibility="visible" />
         </LinearLayout>
 
@@ -239,4 +271,42 @@
             android:layout_width="wrap_content"
             android:layout_height="10dp" />
     </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="389dp"
+        android:layout_height="132dp"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout4">
+
+        <TextView
+            android:id="@+id/dt_humidity"
+            android:layout_width="84dp"
+            android:layout_height="70dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="@string/humidity"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="69dp"
+            android:layout_weight="1" />
+
+        <TextView
+            android:id="@+id/dt_pressure"
+            android:layout_width="84dp"
+            android:layout_height="65dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="@string/pressure"
+            android:textSize="18sp" />
+    </LinearLayout>
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
