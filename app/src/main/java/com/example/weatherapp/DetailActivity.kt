@@ -17,6 +17,7 @@ import java.text.SimpleDateFormat
 class DetailActivity : AppCompatActivity() {
 
     lateinit var searchDate: String
+    lateinit var searchTime: String
     lateinit var tv_place :TextView
     lateinit var tv_time :TextView
             //= intent.getStringExtra("updatedate")
@@ -25,6 +26,7 @@ class DetailActivity : AppCompatActivity() {
         setContentView(R.layout.activity_detail)
 
         searchDate = intent.getStringExtra("updatedate").toString()
+        searchTime = intent.getStringExtra("updatedtime").toString()
         val dt_cityname = intent.getStringExtra("cityname").toString()
 
         DetailTask().execute(dt_cityname, searchDate)
@@ -51,8 +53,9 @@ class DetailActivity : AppCompatActivity() {
                 val date = LocalDate.parse(updated, formatter)
                 val mformatter = DateTimeFormatter.ofPattern("MMM dd")
                 val formatted = date.format(mformatter)
+                val updateTime = updated.split(" ")
 
-                if (formatted  == searchDate) {
+                if ((formatted  == searchDate) && (searchTime == updateTime[1])) {
 
                     val main = singleCity.getJSONObject("main")
                     val temp = "Temp: " + main.getString("temp") + "°C"
