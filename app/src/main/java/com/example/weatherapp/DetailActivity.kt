@@ -64,11 +64,11 @@ class DetailActivity : AppCompatActivity() {
                     val weatherdesc = weather.getJSONObject(0).getString("description")
                     val tempMin = "Min Temp: " + main.getString("temp_min") + "°C"
                     val tempMax = "Max Temp: " + main.getString("temp_max") + "°C"
-                    val pressure =  main.getString("pressure")
+                    val pressure =  main.getString("pressure") + " mmHg"
                     val humidity = main.getString("humidity") +" %"
 
                     val winddetails = singleCity.getJSONObject("wind")
-                    val windSpeed = winddetails.getString("speed")
+                    val windSpeed = winddetails.getString("speed") + " km/h"
 
                     val cityinfo = jsonObj.getJSONObject("city")
                     val placename = cityinfo.getString("name") + ", " + cityinfo.getString("country")

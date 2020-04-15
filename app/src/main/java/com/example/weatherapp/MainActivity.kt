@@ -17,7 +17,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        //weatherTask().execute("San Jose")
+        weatherTask().execute("San Jose")
         val showButton=findViewById<Button>(R.id.button_show)
         showButton.setOnClickListener() {
             val edText=findViewById<EditText>(R.id.address)

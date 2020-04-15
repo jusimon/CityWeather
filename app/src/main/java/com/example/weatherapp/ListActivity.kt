@@ -75,17 +75,17 @@ class ListActivity : AppCompatActivity() {
                 if (formatted == searchDate) {
 
                     val main = singleCity.getJSONObject("main")
-                    val temp = "Temp: " + main.getString("temp") + "°C"
+                    val temp = "Temp: \n" + main.getString("temp") + "°C"
                     val weather = singleCity.getJSONArray("weather")
                     // val weatherDescription = weather.getString(0)
                     val weatherdesc = weather.getJSONObject(0).getString("description")
                     // val tempMin = "Min Temp: " + main.getString("temp_min") + "°C"
                     // val tempMax = "Max Temp: " + main.getString("temp_max") + "°C"
-                    val pressure = "Pressure: " + main.getString("pressure")
-                    val humidity = "Humidity: " + main.getString("humidity")
+                    val pressure = "Pressure: \n" + main.getString("pressure")+" mmHg"
+                    val humidity = "Humidity: \n" + main.getString("humidity")+"%"
 
                     val winddetails = singleCity.getJSONObject("wind")
-                    val windSpeed = "Wind: "+winddetails.getString("speed")
+                    val windSpeed = "Wind: \n"+winddetails.getString("speed")+" km/h"
 
                     val cityinfo = jsonObj.getJSONObject("city")
                     val placename = cityinfo.getString("name") + ", " + cityinfo.getString("country")
